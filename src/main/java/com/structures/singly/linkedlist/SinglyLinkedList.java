@@ -151,9 +151,16 @@ public class SinglyLinkedList {
 		}
 	}
 	
-	public void removeNodeFromPosition(){
-		if(head != null){
-			
+	public void removeNodeFromPosition(int pos){
+		SinglyLinkedListNode temp, removeNode;
+		if(head != null && pos > 0 && pos <= size()){
+			temp = head;
+			while(pos > 2){
+				pos--;
+				temp = temp.next;
+			}
+			removeNode = temp.next;
+			temp.next = removeNode.next;
 		}
 	}
 
