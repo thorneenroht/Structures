@@ -112,6 +112,29 @@ public class SinglyLinkedListUnitTest {
 	}
 
 	@Test
+	public void SinglyLinkedListAddWithPositionNull() {
+		s.add(1, null);
+		assertNull(s.head);
+		
+		s.add(1,node);
+		assertEquals(s.head, node);
+	}
+	
+	@Test
+	public void SinglyLinkedListAddWithPositionNotEmptyList() {
+		s.add(node);
+		s.add(new SinglyLinkedListNode(50));
+		s.add(node2);
+		s.add(new SinglyLinkedListNode(20));
+		s.add(new SinglyLinkedListNode(21));
+		s.add(new SinglyLinkedListNode(22));
+		s.add(4,node3);
+
+		assertEquals(node3, s.findNodePositionByPlace(4));
+		
+	}
+
+	@Test
 	public void SinglyLinkedListSizeZero() {
 		s.add(null);
 		assertEquals(0, s.size());
@@ -148,7 +171,7 @@ public class SinglyLinkedListUnitTest {
 		s.add(node);
 		assertEquals(1, s.findNodePositionByNode(node));
 	}
-	
+
 	@Test
 	public void SinglyLinkedListClear() {
 		s.add(node);
@@ -158,10 +181,23 @@ public class SinglyLinkedListUnitTest {
 		assertNull(s.tail);
 
 	}
-	
+
 	@Test
-	public void SinglyLinkedListFindNodePositionByPlace(){
-		assertEquals(-1,s.findNodePositionByPlace(1));
+	public void SinglyLinkedListFindNodePositionByPlace() {
+		assertNull(s.findNodePositionByPlace(1));
+
+		s.add(node);
+		s.add(new SinglyLinkedListNode(50));
+		s.add(node2);
+		s.add(new SinglyLinkedListNode(20));
+		s.add(new SinglyLinkedListNode(21));
+		s.add(new SinglyLinkedListNode(22));
+		s.addFirst(node3);
+
+		assertEquals(node3, s.findNodePositionByPlace(1));
+		assertEquals(node, s.findNodePositionByPlace(7));
+		assertEquals(node2, s.findNodePositionByPlace(5));
+
 	}
 
 }

@@ -48,13 +48,18 @@ public class SinglyLinkedList {
 	}
 
 	public void add(int position, SinglyLinkedListNode node) {
+		SinglyLinkedListNode temp, nodeBefore;
+
 		if (node != null) {
 			if (head == null && tail == null) {
 				setHeadAndTailToNodeIfNull(node);
 			} else {
 				if (StringUtils.isNumeric(String.valueOf(position))
 						&& size() >= position) {
-						
+					nodeBefore = findNodePositionByPlace(position - 1);
+					temp = nodeBefore.next;
+					node.next = temp;
+					nodeBefore.next = node;
 				} else {
 					addFirst(node);
 				}
@@ -73,10 +78,10 @@ public class SinglyLinkedList {
 
 	public int findNodePositionByNode(SinglyLinkedListNode node) {
 		SinglyLinkedListNode temp = head;
-		if(node != null  && head != null && tail != null){
+		if (node != null && head != null && tail != null) {
 			int i = 1;
-			while(temp.hasNext()){
-				if(node == temp){
+			while (temp.hasNext()) {
+				if (node == temp) {
 					return i;
 				}
 				i++;
@@ -86,19 +91,23 @@ public class SinglyLinkedList {
 		}
 		return 0;
 	}
-	
-	public int findNodePositionByPlace(int pos){
-		if(head != null && tail != null && pos >= 0){
-			
+
+	public SinglyLinkedListNode findNodePositionByPlace(int pos) {
+		SinglyLinkedListNode temp = head;
+		if (head != null && tail != null && pos >= 0 && pos <= size()) {
+			if (pos == 1) {
+				return temp;
+			} else {
+				while (pos > 1) {
+					pos--;
+					temp = temp.next;
+				}
+				return temp;
+			}
 		}
-		
-		return -1;
+
+		return null;
 	}
-	
-	
-	
-	
-	
 
 	public int size() {
 		int i = 0;
@@ -114,14 +123,38 @@ public class SinglyLinkedList {
 		return i;
 	}
 
-	public void clear(){
+	public void clear() {
 		head = null;
 		tail = null;
 	}
-	
+
 	private void setHeadAndTailToNodeIfNull(SinglyLinkedListNode node) {
 		head = node;
 		tail = node;
 	}
+
+	public void removeFirst() {
+		if(head != null){
+			head = head.next;
+		}
+		
+	}
 	
+	public void removeLast(){
+		SinglyLinkedListNode temp;
+		if(head != null){
+			temp = head;
+			while(temp.next.hasNext()){
+				temp = temp.next;
+			}
+			temp.next = null;
+		}
+	}
+	
+	public void removeNodeFromPosition(){
+		if(head != null){
+			
+		}
+	}
+
 }
