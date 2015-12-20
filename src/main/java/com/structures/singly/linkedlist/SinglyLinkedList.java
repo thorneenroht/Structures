@@ -1,5 +1,7 @@
 package com.structures.singly.linkedlist;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class SinglyLinkedList {
 
 	public SinglyLinkedListNode head;
@@ -38,9 +40,24 @@ public class SinglyLinkedList {
 		if (node != null) {
 			if (head == null && tail == null) {
 				setHeadAndTailToNodeIfNull(node);
-			}else{
-				node.next = head;
-				head = node;
+			} else {
+				addFirst(node);
+			}
+		}
+
+	}
+
+	public void add(int position, SinglyLinkedListNode node) {
+		if (node != null) {
+			if (head == null && tail == null) {
+				setHeadAndTailToNodeIfNull(node);
+			} else {
+				if (StringUtils.isNumeric(String.valueOf(position))
+						&& size() >= position) {
+						
+				} else {
+					addFirst(node);
+				}
 			}
 		}
 
@@ -54,23 +71,57 @@ public class SinglyLinkedList {
 		return temp;
 	}
 
-	private int findNodePosition(SinglyLinkedListNode node) {
-		int i = 0;
-		if (head != node) {
-			while (head.hasNext()) {
-				i++;
-				if (head.next == node) {
+	public int findNodePositionByNode(SinglyLinkedListNode node) {
+		SinglyLinkedListNode temp = head;
+		if(node != null  && head != null && tail != null){
+			int i = 1;
+			while(temp.hasNext()){
+				if(node == temp){
 					return i;
 				}
+				i++;
+				temp = temp.next;
 			}
+			return i;
 		}
 		return 0;
+	}
+	
+	public int findNodePositionByPlace(int pos){
+		if(head != null && tail != null && pos >= 0){
+			
+		}
+		
+		return -1;
+	}
+	
+	
+	
+	
+	
 
+	public int size() {
+		int i = 0;
+		SinglyLinkedListNode temp = head;
+		if (head != null && tail != null) {
+			i = 1;
+			while (temp.hasNext()) {
+				temp = temp.next;
+				i++;
+			}
+
+		}
+		return i;
 	}
 
+	public void clear(){
+		head = null;
+		tail = null;
+	}
+	
 	private void setHeadAndTailToNodeIfNull(SinglyLinkedListNode node) {
 		head = node;
 		tail = node;
 	}
-
+	
 }
