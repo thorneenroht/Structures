@@ -22,7 +22,7 @@ public class StackImpl {
 	public StackNode pop() {
 		StackNode temp = null;
 		if(top != null){
-			temp = top.next;
+			temp = top;
 			top = top.next;
 			temp.next = null;
 		}
