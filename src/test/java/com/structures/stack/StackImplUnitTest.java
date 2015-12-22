@@ -1,8 +1,10 @@
 package com.structures.stack;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -69,5 +71,66 @@ public class StackImplUnitTest {
 		assertNotNull(s.pop());
 		assertNull(s.pop());
 	}
+	
+	@Test
+	public void getStackSizeEmptyTest(){
+		assertEquals(0, s.getStackSize());
+	}
+	
+	@Test
+	public void getStackSizeOneTest(){
+		s.push(node);
+		assertEquals(1, s.getStackSize());
+	}
+	
+	@Test
+	public void getStackSizeMultipleTest(){
+		s.push(node);
+		s.push(node1);
+		s.push(node2);
+		s.push(node3);
+		s.push(node4);
+		assertEquals(5, s.getStackSize());
+	}
+	
+	@Test
+	public void isEmptyStackTest(){
+		assertTrue(s.isEmpty());
+		assertFalse(s.isFull());
+	}
+	
+	@Test
+	public void isFullStackFalseTest(){
+		s.push(node);
+		s.push(node1);
+		
+		assertFalse(s.isFull());
+		assertFalse(s.isEmpty());
+	}
+	
+	@Test
+	public void isFullStackTrueTest(){
+		s.push(node);
+		s.push(node1);
+		s.push(node2);
+		s.push(node3);
+		s.push(node4);
+		
+		assertTrue(s.isFull());
+		assertFalse(s.isEmpty());
+	}
+	
+	@Test
+	public void topTest(){
+		s.push(node);
+		assertEquals(node, s.top());
+	}
+	
+	@Test
+	public void topNullTest(){
+		assertEquals(null, s.top());
+	}
+	
+	 
 
 }
