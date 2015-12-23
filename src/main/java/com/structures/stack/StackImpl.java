@@ -7,12 +7,11 @@ public class StackImpl {
 	public void push(StackNode node) {
 		StackNode temp;
 		if (node != null) {
-			if (top != null  && getStackSize() <= depth) {
+			if (top != null  && getStackSize() < depth) {
 				temp = top;
 				node.next = temp;
 				top = node;
-			} else {
-				node.next = top;
+			} else if(top == null) {
 				top = node;
 			}
 		}

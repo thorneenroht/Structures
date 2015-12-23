@@ -41,11 +41,10 @@ public class StackImplUnitTest {
 		s.push(node);
 		s.push(node1);
 		s.push(node2);
-		s.push(node3);
-		s.push(node4);
+		
 
 		assertNotNull(s.top);
-		assertEquals(node4, s.top);
+		assertEquals(node2, s.top);
 	}
 
 	@Test
@@ -64,11 +63,11 @@ public class StackImplUnitTest {
 		s.push(node);
 		s.push(node1);
 		s.push(node2);
-		s.push(node3);
+		
 		assertNotNull(s.pop());
 		assertNotNull(s.pop());
 		assertNotNull(s.pop());
-		assertNotNull(s.pop());
+		
 		assertNull(s.pop());
 	}
 	
@@ -90,7 +89,7 @@ public class StackImplUnitTest {
 		s.push(node2);
 		s.push(node3);
 		s.push(node4);
-		assertEquals(5, s.getStackSize());
+		assertEquals(3, s.getStackSize());
 	}
 	
 	@Test
