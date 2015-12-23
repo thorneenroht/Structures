@@ -38,6 +38,50 @@ public class QueueImplUnitTest {
 	@Test
 	public void addMultipleTest(){
 		q.add(node);
+		q.add(node1);
+		q.add(node2);
+		q.add(node3);
 		assertNotNull(q.head);
+		assertEquals(node, q.head);
+	}
+	
+	@Test
+	public void elementNullTest(){
+		assertNull(q.element());
+	}
+	
+	@Test
+	public void elementNotNullTest(){
+		q.add(node);
+		assertNotNull(q.element());
+	}
+	
+	@Test
+	public void peekNullTest(){
+		assertNull(q.peek());
+	}
+	
+	@Test
+	public void peekNotNullTest(){
+		q.add(node);
+		assertNotNull(q.peek());
+	}
+	
+	@Test
+	public void removeNullTest(){
+		assertNull(q.remove());
+	}
+	
+	@Test
+	public void removeTest(){
+		q.add(node);
+		q.add(node1);
+		assertNotNull(q.remove());
+		assertEquals(node1, q.remove());
+	}
+	
+	@Test
+	public void pollNullTest(){
+		assertNull(q.poll());
 	}
 }

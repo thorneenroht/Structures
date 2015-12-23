@@ -41,8 +41,9 @@ public class QueueImpl {
 
 	public QueueNode remove() {
 		QueueNode temp = head;
-
-		head = head.next;
+		if(head != null)
+			head = head.next;
+		
 		return temp;
 
 	}
