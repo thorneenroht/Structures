@@ -7,14 +7,15 @@ public class QueueImpl {
 		QueueNode findTail = head;
 		if (node != null) {
 			if (head != null) {
-				while (findTail != null) {
-					findTail = findTail.next;
+				while (head.next != null) {
+					head = head.next;
 				}
-				findTail = node;
-
+				head.next = node;
+				head = findTail;
 			} else {
 				head = node;
 			}
+			
 		}
 
 	}
