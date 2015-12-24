@@ -142,12 +142,19 @@ public class SinglyLinkedList {
 	
 	public void removeLast(){
 		SinglyLinkedListNode temp;
-		if(head != null){
+		SinglyLinkedListNode nodeBefore = null;
+		if(head != null || head.next != null){
 			temp = head;
-			while(temp.next.hasNext()){
-				temp = temp.next;
+			if(temp.next != null){
+				while(temp.hasNext()){
+					nodeBefore = temp;
+					temp = temp.next;
+					
+				}
+				nodeBefore.next= null;
+			}else{
+				removeFirst();
 			}
-			temp.next = null;
 		}
 	}
 	
@@ -162,6 +169,37 @@ public class SinglyLinkedList {
 			removeNode = temp.next;
 			temp.next = removeNode.next;
 		}
+	}
+
+	public void reverseList() {
+		if(head != null){
+			SinglyLinkedListNode temp = head;
+			SinglyLinkedListNode reverseList = null;
+			SinglyLinkedListNode reverseHead = null;
+			
+			while(head != null){
+				temp = head;
+				while(temp.next != null){
+					
+					temp = temp.next;
+					
+				}
+				if(reverseHead == null){
+					reverseList = temp;
+					
+					reverseHead = reverseList; 
+				}else{
+					while(reverseList.next != null){
+						reverseList = reverseList.next;
+					}
+					reverseList.next = temp;
+				}
+				removeLast();
+			}
+			head = reverseHead;
+			
+		}
+		
 	}
 
 }

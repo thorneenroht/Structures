@@ -199,5 +199,42 @@ public class SinglyLinkedListUnitTest {
 		assertEquals(node2, s.findNodePositionByPlace(5));
 
 	}
+	
+	@Test
+	public void reverseSinglyLinkedListTest(){
+		s.add(node);
+		s.add(node3);
+		s.add(node2);
+		
+		assertNotNull(s.head);
+		assertEquals(node2, s.head);
+		s.reverseList();
+		assertEquals(node, s.head);
+	}
+	
+	@Test
+	public void removeLastNodeTest(){
+		s.add(node);
+		s.add(node2);
+		s.add(node3);
+		
+		s.removeLast();
+		s.removeLast();
+		s.removeLast();
+		assertNull(s.head);
+	}
+	
+	@Test
+	public void removeFirstNodeTest(){
+		s.add(node);
+		s.add(node2);
+		s.add(node3);
+		
+		s.removeFirst();
+		s.removeFirst();
+		s.removeFirst();
+		assertNull(s.head);
+	}
+	
 
 }
