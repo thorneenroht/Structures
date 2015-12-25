@@ -3,13 +3,21 @@ package com.structures.singly.linkedlist;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.hamcrest.Matchers.*;
+
 
 import org.junit.Before;
-import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import com.structures.exceptions.SizeException;
 
 public class SinglyLinkedListUnitTest {
 
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+	
 	public SinglyLinkedList s;
 	public SinglyLinkedList nCheck;
 	public SinglyLinkedListNode node, node2, node3;
@@ -250,5 +258,23 @@ public class SinglyLinkedListUnitTest {
 		
 	}
 	
+//	@Test
+//	public void deleteNodeNthFromTheEndTest(){
+//		s.add(node);
+//		s.add(node2);
+//		s.add(node3);
+//		
+//		assertNotNull(s.head);
+//		assertEquals(3, s.getSize());
+//		s.deleteNodeNthFromTheEnd(0);
+//	}
 
+	@Test
+	public void deleteNodeNthFromTheEndExceptionTest() throws SizeException{
+		SizeException e = new SizeException(null);
+		
+		thrown.expect(isA(SizeException.class));
+		s.deleteNodeNthFromTheEnd(12);
+	}
+	
 }

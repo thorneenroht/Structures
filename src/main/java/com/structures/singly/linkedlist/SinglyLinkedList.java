@@ -2,6 +2,8 @@ package com.structures.singly.linkedlist;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.structures.exceptions.SizeException;
+
 public class SinglyLinkedList {
 
 	public SinglyLinkedListNode head;
@@ -208,6 +210,16 @@ public class SinglyLinkedList {
 		}
 		return i;
 		
+		
+	}
+
+	public void deleteNodeNthFromTheEnd(int i) throws SizeException {
+		if(i <= getSize()){
+			
+			
+		}else{
+			throw new SizeException("Age can't be less than zero");
+		}
 		
 	}
 
