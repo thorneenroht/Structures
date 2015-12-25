@@ -180,13 +180,10 @@ public class SinglyLinkedList {
 			while(head != null){
 				temp = head;
 				while(temp.next != null){
-					
 					temp = temp.next;
-					
 				}
 				if(reverseHead == null){
 					reverseList = temp;
-					
 					reverseHead = reverseList; 
 				}else{
 					while(reverseList.next != null){
@@ -199,6 +196,18 @@ public class SinglyLinkedList {
 			head = reverseHead;
 			
 		}
+		
+	}
+	
+	public int getSize(){
+		SinglyLinkedListNode temp = head;
+		int i = 0;
+		while(temp != null){
+			temp = temp.next;
+			i++;
+		}
+		return i;
+		
 		
 	}
 

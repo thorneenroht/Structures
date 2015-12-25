@@ -237,4 +237,18 @@ public class SinglyLinkedListUnitTest {
 	}
 	
 
+	@Test
+	public void getSizeTest(){
+		s.add(node);
+		s.add(node2);
+		s.add(node3);
+		
+		assertNotNull(s.head);
+		assertEquals(3, s.getSize());
+		s.removeFirst();
+		assertEquals(2, s.getSize());
+		
+	}
+	
+
 }
