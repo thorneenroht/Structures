@@ -214,11 +214,19 @@ public class SinglyLinkedList {
 	}
 
 	public void deleteNodeNthFromTheEnd(int i) throws SizeException {
-		if(i <= getSize()){
+		SinglyLinkedListNode temp = head;
+		if(i <= getSize() - 1){
 			if(i == 0){
 				removeLast();
-			}else {
-				
+			}else if(i == getSize() - 1) {
+				removeFirst();
+			}else{
+				int num =  getSize() - i;
+				while(num > 0){
+					num--;
+					temp = temp.next;
+				}
+				temp.next = temp.next.next;
 			}
 			
 		}else{
