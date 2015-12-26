@@ -215,7 +215,11 @@ public class SinglyLinkedList {
 
 	public void deleteNodeNthFromTheEnd(int i) throws SizeException {
 		if(i <= getSize()){
-			
+			if(i == 0){
+				removeLast();
+			}else {
+				
+			}
 			
 		}else{
 			throw new SizeException("Age can't be less than zero");

@@ -258,21 +258,21 @@ public class SinglyLinkedListUnitTest {
 		
 	}
 	
-//	@Test
-//	public void deleteNodeNthFromTheEndTest(){
-//		s.add(node);
-//		s.add(node2);
-//		s.add(node3);
-//		
-//		assertNotNull(s.head);
-//		assertEquals(3, s.getSize());
-//		s.deleteNodeNthFromTheEnd(0);
-//	}
+	@Test
+	public void deleteNodeNthFromTheEndTest() throws SizeException{
+		s.add(node);
+		s.add(node2);
+		s.add(node3);
+		
+		assertNotNull(s.head);
+		assertEquals(3, s.getSize());
+		s.deleteNodeNthFromTheEnd(0);
+		assertEquals(2, s.getSize());
+	}
 
 	@Test
 	public void deleteNodeNthFromTheEndExceptionTest() throws SizeException{
 		SizeException e = new SizeException(null);
-		
 		thrown.expect(isA(SizeException.class));
 		s.deleteNodeNthFromTheEnd(12);
 	}
