@@ -230,7 +230,7 @@ public class SinglyLinkedList {
 			}
 			
 		}else{
-			throw new SizeException("Age can't be less than zero");
+			throw new SizeException("Size can't be less than zero");
 		}
 		
 	}
