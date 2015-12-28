@@ -136,35 +136,35 @@ public class SinglyLinkedList {
 	}
 
 	public void removeFirst() {
-		if(head != null){
+		if (head != null) {
 			head = head.next;
 		}
-		
+
 	}
-	
-	public void removeLast(){
+
+	public void removeLast() {
 		SinglyLinkedListNode temp;
 		SinglyLinkedListNode nodeBefore = null;
-		if(head != null || head.next != null){
+		if (head != null || head.next != null) {
 			temp = head;
-			if(temp.next != null){
-				while(temp.hasNext()){
+			if (temp.next != null) {
+				while (temp.hasNext()) {
 					nodeBefore = temp;
 					temp = temp.next;
-					
+
 				}
-				nodeBefore.next= null;
-			}else{
+				nodeBefore.next = null;
+			} else {
 				removeFirst();
 			}
 		}
 	}
-	
-	public void removeNodeFromPosition(int pos){
+
+	public void removeNodeFromPosition(int pos) {
 		SinglyLinkedListNode temp, removeNode;
-		if(head != null && pos > 0 && pos <= size()){
+		if (head != null && pos > 0 && pos <= size()) {
 			temp = head;
-			while(pos > 2){
+			while (pos > 2) {
 				pos--;
 				temp = temp.next;
 			}
@@ -174,21 +174,21 @@ public class SinglyLinkedList {
 	}
 
 	public void reverseList() {
-		if(head != null){
+		if (head != null) {
 			SinglyLinkedListNode temp = head;
 			SinglyLinkedListNode reverseList = null;
 			SinglyLinkedListNode reverseHead = null;
-			
-			while(head != null){
+
+			while (head != null) {
 				temp = head;
-				while(temp.next != null){
+				while (temp.next != null) {
 					temp = temp.next;
 				}
-				if(reverseHead == null){
+				if (reverseHead == null) {
 					reverseList = temp;
-					reverseHead = reverseList; 
-				}else{
-					while(reverseList.next != null){
+					reverseHead = reverseList;
+				} else {
+					while (reverseList.next != null) {
 						reverseList = reverseList.next;
 					}
 					reverseList.next = temp;
@@ -196,43 +196,86 @@ public class SinglyLinkedList {
 				removeLast();
 			}
 			head = reverseHead;
-			
+
 		}
-		
+
 	}
-	
-	public int getSize(){
+
+	public void reverseListIteratively() {
+		if (head == null || head.next == null)
+			return; // empty or just one node in list
+
+		SinglyLinkedListNode Second = head.next;
+
+		// store third node before we change
+		SinglyLinkedListNode Third = Second.next;
+
+		// Second's next pointer
+		Second.next = head; // second now points to head
+		head.next = null; // change head pointer to NULL
+
+		// only two nodes, which we already reversed
+		if (Third == null)
+			return;
+
+		SinglyLinkedListNode CurrentNode = Third;
+
+		SinglyLinkedListNode PreviousNode = Second;
+
+		while (CurrentNode != null) {
+			SinglyLinkedListNode NextNode = CurrentNode.next;
+
+			CurrentNode.next = PreviousNode;
+
+			/*
+			 * repeat the process, but have to reset the PreviousNode and
+			 * CurrentNode
+			 */
+
+			PreviousNode = CurrentNode;
+			CurrentNode = NextNode;
+		}
+
+		head = PreviousNode; // reset the head node
+	}
+
+	public void reverseRecursive() {
+		if (head != null) {
+
+		}
+	}
+
+	public int getSize() {
 		SinglyLinkedListNode temp = head;
 		int i = 0;
-		while(temp != null){
+		while (temp != null) {
 			temp = temp.next;
 			i++;
 		}
 		return i;
-		
-		
+
 	}
 
 	public void deleteNodeNthFromTheEnd(int i) throws SizeException {
 		SinglyLinkedListNode temp = head;
-		if(i <= getSize() - 1){
-			if(i == 0){
+		if (i <= getSize() - 1) {
+			if (i == 0) {
 				removeLast();
-			}else if(i == getSize() - 1) {
+			} else if (i == getSize() - 1) {
 				removeFirst();
-			}else{
-				int num =  getSize() - i;
-				while(num > 0){
+			} else {
+				int num = getSize() - i;
+				while (num > 0) {
 					num--;
 					temp = temp.next;
 				}
 				temp.next = temp.next.next;
 			}
-			
-		}else{
+
+		} else {
 			throw new SizeException("Size can't be less than zero");
 		}
-		
+
 	}
 
 }

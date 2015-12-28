@@ -20,15 +20,17 @@ public class SinglyLinkedListUnitTest {
 	
 	public SinglyLinkedList s;
 	public SinglyLinkedList nCheck;
-	public SinglyLinkedListNode node, node2, node3;
+	public SinglyLinkedListNode node, node1, node2, node3, node4;
 
 	@Before
 	public void setUp() {
 		nCheck = new SinglyLinkedList();
 		s = new SinglyLinkedList();
 		node = new SinglyLinkedListNode(1);
+		node1 = new SinglyLinkedListNode(15);
 		node2 = new SinglyLinkedListNode(2);
 		node3 = new SinglyLinkedListNode(3);
+		node4 = new SinglyLinkedListNode(35);
 	}
 
 	@Test
@@ -287,6 +289,32 @@ public class SinglyLinkedListUnitTest {
 		SizeException e = new SizeException(null);
 		thrown.expect(isA(SizeException.class));
 		s.deleteNodeNthFromTheEnd(12);
+	}
+	
+	@Test
+	public void reverseListIterativelyUnitTest(){
+		s.add(node);
+		s.add(node1);
+		s.add(node2);
+		s.add(node3);
+		s.add(node4);
+		
+		print();
+		s.reverseList();
+		print();
+		s.reverseListIteratively();
+		print();
+	}
+
+	private void print() {
+		SinglyLinkedListNode temp = s.head;
+		System.out.println("Printing the list:");
+		
+		while(temp != null){
+			System.out.println(temp.val);
+			temp = temp.next;
+		}
+		
 	}
 	
 }
