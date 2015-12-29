@@ -256,6 +256,35 @@ public class SinglyLinkedList {
 
 	}
 
+	public void newReverseLinkedList(){
+		SinglyLinkedListNode temp = head;
+		if(head != null || head.next != null){
+			SinglyLinkedListNode second = temp.next;
+			SinglyLinkedListNode third = second.next;
+			
+			second.next = temp;
+			temp.next = null;
+			if(third == null){
+				return;
+			}
+			
+			SinglyLinkedListNode currentNode = second;
+			SinglyLinkedListNode previousNode = third;
+			while(previousNode != null){
+				SinglyLinkedListNode nextNode = previousNode;
+				previousNode = previousNode.next;
+				nextNode.next = currentNode;
+				
+				currentNode = nextNode;
+				
+			}
+			head = currentNode;
+		}
+		
+	}
+	
+	
+	
 	public void deleteNodeNthFromTheEnd(int i) throws SizeException {
 		SinglyLinkedListNode temp = head;
 		if (i <= getSize() - 1) {

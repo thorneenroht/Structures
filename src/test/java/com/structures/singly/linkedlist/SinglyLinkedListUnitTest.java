@@ -304,6 +304,8 @@ public class SinglyLinkedListUnitTest {
 		print();
 		s.reverseListIteratively();
 		print();
+		s.newReverseLinkedList();
+		print();
 	}
 
 	private void print() {
