@@ -307,6 +307,18 @@ public class SinglyLinkedListUnitTest {
 		s.newReverseLinkedList();
 		print();
 	}
+	
+	@Test
+	public void recursiveReverseTest(){
+		s.add(node);
+		s.add(node1);
+		s.add(node2);
+		s.add(node3);
+		s.add(node4);
+		print();
+		s.recursiveReverse();
+		print();
+	}
 
 	private void print() {
 		SinglyLinkedListNode temp = s.head;

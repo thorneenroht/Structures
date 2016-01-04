@@ -239,10 +239,28 @@ public class SinglyLinkedList {
 		head = PreviousNode; // reset the head node
 	}
 
-	public void reverseRecursive() {
-		if (head != null) {
+	public void recursiveReverse() {
 
+		recursiveReversePrivate(head);
+	}
+
+	private void recursiveReversePrivate(SinglyLinkedListNode currentNode) {
+		// check for empty list
+		if (currentNode == null)
+			return;
+
+		/*
+		 * if we are at the TAIL node: recursive base case:
+		 */
+		if (currentNode.next == null) {
+			// set HEAD to current TAIL since we are reversing list
+			head = currentNode;
+			return; // since this is the base case
 		}
+
+		recursiveReversePrivate(currentNode.next);
+		currentNode.next.next = currentNode;
+		currentNode.next = null; // set "old" next pointer to NULL
 	}
 
 	public int getSize() {
@@ -256,35 +274,33 @@ public class SinglyLinkedList {
 
 	}
 
-	public void newReverseLinkedList(){
+	public void newReverseLinkedList() {
 		SinglyLinkedListNode temp = head;
-		if(head != null || head.next != null){
+		if (head != null || head.next != null) {
 			SinglyLinkedListNode second = temp.next;
 			SinglyLinkedListNode third = second.next;
-			
+
 			second.next = temp;
 			temp.next = null;
-			if(third == null){
+			if (third == null) {
 				return;
 			}
-			
+
 			SinglyLinkedListNode currentNode = second;
 			SinglyLinkedListNode previousNode = third;
-			while(previousNode != null){
+			while (previousNode != null) {
 				SinglyLinkedListNode nextNode = previousNode;
 				previousNode = previousNode.next;
 				nextNode.next = currentNode;
-				
+
 				currentNode = nextNode;
-				
+
 			}
 			head = currentNode;
 		}
-		
+
 	}
-	
-	
-	
+
 	public void deleteNodeNthFromTheEnd(int i) throws SizeException {
 		SinglyLinkedListNode temp = head;
 		if (i <= getSize() - 1) {
